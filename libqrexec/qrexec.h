@@ -164,7 +164,6 @@ enum {
 #define QREXEC_AGENT_FDPASS_PATH "/var/run/qubes/qrexec-agent-fdpass"
 #define MEMINFO_WRITER_PIDFILE "/var/run/meminfo-writer.pid"
 #define QREXEC_DAEMON_SOCKET_DIR "/var/run/qubes"
-#define QREXEC_POLICY_PROGRAM "/usr/bin/qrexec-policy-exec"
 #define QREXEC_SERVICE_PATH "/run/qubes-rpc:/usr/local/etc/qubes-rpc:/etc/qubes-rpc"
 
 // directory for services configuration (for example 'wait-for-session' flag)
