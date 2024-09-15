@@ -114,7 +114,7 @@ static const char default_user_keyword[] = "DEFAULT:";
 
 static int opt_quiet = 0;
 
-static const char *policy_program = QREXEC_POLICY_PROGRAM;
+static const char *policy_program = NULL;
 
 #ifdef __GNUC__
 #  define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))
@@ -1571,8 +1571,7 @@ static _Noreturn void usage(const char *argv0)
     fprintf(stderr, "  -q, --quiet - quiet mode\n");
     fprintf(stderr, "  --socket-dir=PATH - directory for qrexec socket, default: %s\n",
             QREXEC_DAEMON_SOCKET_DIR);
-    fprintf(stderr, "  -p, --policy-program=PATH - program to execute to check policy, default: %s\n",
-            QREXEC_POLICY_PROGRAM);
+    fprintf(stderr, "  -p, --policy-program=PATH - program to execute to check policy\n");
     fprintf(stderr, "  -D, --direct - run directly, don't daemonize, log to stderr\n");
     fprintf(stderr, "  -u, --uuid=UUID - domain UUID, mandatory\n");
     exit(1);
@@ -1620,7 +1619,7 @@ int main(int argc, char **argv)
                 usage(argv[0]);
         }
     }
-    if (argc - optind < 2 || argc - optind > 3) {
+    if (argc - optind < 2 || argc - optind > 3 || policy_program == NULL) {
         usage(argv[0]);
     }
     if (!remote_domain_uuid) {
